@@ -1,0 +1,99 @@
+{
+  "spec": {
+    "layout": {
+      "type": "stack",
+      "props": { "gap": "lg", "padding": "xl" },
+      "children": [
+        {
+          "type": "row",
+          "props": { "justify": "between", "align": "center" },
+          "children": [
+            { "type": "heading", "props": { "text": "Vocab Flashcards", "level": 2 } },
+            { "type": "badge", "props": { "text": "$bindings.remainingLabel", "variant": "default" } }
+          ]
+        },
+        {
+          "type": "key-value",
+          "props": {
+            "entries": [
+              { "key": "Box 1", "value": "$bindings.box1" },
+              { "key": "Box 2", "value": "$bindings.box2" },
+              { "key": "Box 3", "value": "$bindings.box3" },
+              { "key": "Box 4", "value": "$bindings.box4" },
+              { "key": "Box 5", "value": "$bindings.box5" }
+            ]
+          }
+        },
+        { "type": "divider", "props": {} },
+        {
+          "type": "stack",
+          "props": { "gap": "lg", "align": "center", "padding": "xl" },
+          "visible": "$bindings.hasCard",
+          "children": [
+            { "type": "heading", "props": { "text": "$bindings.cardTerm", "level": 1 } },
+            {
+              "type": "text",
+              "props": { "text": "$bindings.cardPartOfSpeech", "variant": "muted" }
+            },
+            {
+              "type": "stack",
+              "props": { "gap": "sm", "align": "center" },
+              "visible": "$local.flipped",
+              "children": [
+                { "type": "divider", "props": {} },
+                { "type": "heading", "props": { "text": "$bindings.cardTranslation", "level": 3 } },
+                { "type": "text", "props": { "text": "$bindings.cardExample", "variant": "secondary" } },
+                { "type": "text", "props": { "text": "$bindings.cardMnemonic", "variant": "muted" } }
+              ]
+            },
+            {
+              "type": "button",
+              "props": { "label": "Flip", "variant": "secondary" },
+              "visible": "$bindings.notFlipped",
+              "events": { "click": { "action": "local", "handler": "$local.flipped = true" } }
+            },
+            {
+              "type": "row",
+              "props": { "gap": "sm", "justify": "center" },
+              "visible": "$local.flipped",
+              "children": [
+                {
+                  "type": "button",
+                  "props": { "label": "Wrong", "variant": "danger" },
+                  "events": { "click": { "action": "agent-message", "message": "rate current card: wrong" } }
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Hard", "variant": "ghost" },
+                  "events": { "click": { "action": "agent-message", "message": "rate current card: hard" } }
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Good", "variant": "secondary" },
+                  "events": { "click": { "action": "agent-message", "message": "rate current card: good" } }
+                },
+                {
+                  "type": "button",
+                  "props": { "label": "Easy", "variant": "primary" },
+                  "events": { "click": { "action": "agent-message", "message": "rate current card: easy" } }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "empty-state",
+          "props": { "title": "All caught up!", "description": "No cards due. Add a new word to continue." },
+          "visible": "$bindings.noCards"
+        },
+        { "type": "divider", "props": {} },
+        {
+          "type": "input",
+          "props": { "value": "", "placeholder": "Add a word or phrase to learn..." },
+          "events": { "submit": { "action": "agent-message", "message": "add new card for: {{value}}" } }
+        }
+      ]
+    }
+  },
+  "updatedAt": 0
+}

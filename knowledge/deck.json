@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ephemeral",
+    "term": "ephemeral",
+    "translation": "lasting for a very short time",
+    "partOfSpeech": "adjective",
+    "example": "The beauty of cherry blossoms is ephemeral.",
+    "mnemonic": "E-PHEM-E-RAL: think of a Pokémon that phases out after a brief appearance.",
+    "box": 1,
+    "dueAt": "2026-04-21T00:00:00Z",
+    "lang": "en"
+  },
+  {
+    "id": "sobremesa",
+    "term": "sobremesa",
+    "translation": "(Spanish) the relaxed conversation after a meal is finished",
+    "partOfSpeech": "noun",
+    "example": "La sobremesa duró más que la cena.",
+    "mnemonic": "sobre (over) + mesa (table) — the time spent leaning over the table.",
+    "box": 1,
+    "dueAt": "2026-04-21T00:00:00Z",
+    "lang": "es"
+  },
+  {
+    "id": "hyakushiki",
+    "term": "百聞は一見に如かず",
+    "translation": "(Japanese) seeing once is better than hearing a hundred times",
+    "partOfSpeech": "idiom",
+    "example": "百聞は一見に如かず — let's just visit the place.",
+    "mnemonic": "hundred hearings ≠ one seeing",
+    "box": 1,
+    "dueAt": "2026-04-21T00:00:00Z",
+    "lang": "ja"
+  }
+]
